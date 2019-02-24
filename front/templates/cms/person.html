@@ -1,0 +1,78 @@
+{% extends 'cms/base.html' %}
+{% load news_filters %}
+{% block title %}
+    首页
+{% endblock %}
+{% block content-header %}
+    <h1>欢迎来到个人中心</h1>
+{% endblock %}
+{% block head %}
+    <script src="{% static 'js/person.min.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <form action="" class="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="title-form">用户名</label>
+                            <input type="text" class="form-control" name="username" value="{{ user.username }}" id="title-form">
+                        </div>
+                        <div class="form-group">
+                            <label for="category-form">电话</label>
+                            <input type="text" class="form-control" value="{{ user.telephone }}" name="telephone" id="title-form">
+                        </div>
+                        <div class="form-group">
+                            <label for="thumbnail-form">邮箱</label>
+                            {% if user.email %}
+                                <input type="text" class="form-control" value="{{ user.email }}" name="email"/>
+                            {% else %}
+                                <input type="text" class="form-control" value="" name="email"/>
+                            {% endif %}
+                        </div>
+{#                        <div class="form-group">#}
+{#                            <label for="content-form">密码</label>#}
+{#                            <input type="text" class="form-control" name="superuser" value="{{ user.password }}"/>#}
+{#                        </div>#}
+                        <div class="form-group">
+                            <label for="thumbnail-form">超级管理员</label>
+                            {% if user.is_superuser %}
+                                <input type="text" disabled class="form-control" value="是" name="superuser"/>
+                            {% else %}
+                                <input type="text" disabled class="form-control" value="否" name="superuser"/>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">最后登录时间</label>
+                            <input type="text" disabled class="form-control" name="superuser" value="{{ user.last_login|time_Strf }}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">注册时间</label>
+                            <input type="text" disabled class="form-control" name="superuser" value="{{ user.data_joined|time_Strf }}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">员工</label>
+                            {% if user.is_staff %}
+                                <input type="text" disabled class="form-control" name="superuser" value="是"/>
+                            {% else %}
+                                <input type="text" disabled class="form-control" name="superuser" value="否"/>
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">活跃</label>
+                            {% if user.is_active %}
+                                <input type="text" disabled class="form-control" name="superuser" value="是"/>
+                            {% else %}
+                                <input type="text" disabled class="form-control" name="superuser" value="否"/>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button id="submit-btn" data-auth="{{ user.uid }}" class="btn btn-primary pull-right">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
