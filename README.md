@@ -10,7 +10,7 @@
 * debug_toolbar	Debug Toolbar	1.11
 * haystack	Haystack	0.42
 * rest_framework	Django REST framework	3.9.1
-* [所有库函数](http://blog.csdn.net/guodongxiaren)
+* [所有库函数](https://github.com/syb666/mysite/blob/master/All_Library.md)
 ## 数据库
 * Mysql 5.7
 ## 虚拟环境
